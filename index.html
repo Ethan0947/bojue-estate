@@ -540,9 +540,18 @@ min-height:auto;
 gap:30px;
 }
 .cc-left{flex-direction:column!important;}
-.cc-left .m-head{writing-mode:horizontal-tb;text-orientation:mixed;}
-.cc-left .m-head h3{writing-mode:horizontal-tb;}
+.cc-left .m-head{writing-mode:horizontal-tb!important;text-orientation:mixed!important;}
+.cc-left .m-head h3{writing-mode:horizontal-tb!important;margin-right:0!important;}
 .cc-right .cc-fade{width:100%;}
+/* ▼ 手機版：直書元素全數轉橫（這些元素的直書是inline style，必須用!important蓋） */
+.cc-left .m-sub{writing-mode:horizontal-tb!important;text-orientation:mixed!important;margin:14px 0 0 0!important;font-size:1rem!important;line-height:1.8!important;}
+.cc-big-label{writing-mode:horizontal-tb!important;text-orientation:mixed!important;letter-spacing:0.08em!important;}
+/* 雨量圖例：直式冰棒 → 橫式色帶 */
+.cc-leg-wrap{flex-direction:column!important;height:auto!important;width:100%!important;gap:8px!important;margin-top:14px!important;}
+.cc-leg-title{writing-mode:horizontal-tb!important;text-orientation:mixed!important;text-align:center!important;}
+.cc-leg-scale{flex-direction:row!important;width:100%!important;height:34px!important;}
+.cc-leg-side{writing-mode:horizontal-tb!important;text-orientation:mixed!important;flex-direction:row!important;height:auto!important;width:100%!important;padding:0!important;}
+.cc-leg-arrow{transform:none!important;}
 }
 </style>
 </head>
@@ -851,7 +860,12 @@ gap:30px;
         <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h3M14 10h2M8 14h3M14 14h2M8 18h3"/></svg>
         <div><div class="t-name">頭期款計算機</div><div class="t-en">Down Payment Calc</div></div>
       </a>
+      <a class="tool reveal" href="https://qingan-mortgage-calculator.vercel.app/" target="_blank" rel="noopener">
+        <svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg>
+        <div><div class="t-name">新青安3.0房貸試算</div><div class="t-en">Qing-An Mortgage Calc</div></div>
+      </a>
     </div>
+    <p class="reveal" style="margin-top:18px;font-size:.82rem;color:var(--muted);line-height:1.7;letter-spacing:.03em">※ 新青安3.0適用 2026/8/1 起送件之申請；2026/7/31 前送件適用青安2.0（無年齡、所得、房價限制）。試算工具內之利率、成數、額度上限皆可自行調整，實際以銀行核貸為準。</p>
   </div>
 </section>
 
@@ -1144,7 +1158,7 @@ render(pre.today);
         '<div style="display:flex;flex-direction:column;align-items:center;gap:18px;justify-content:center;">'+
           '<div style="display:flex;flex-direction:column;align-items:center;">'+
             '<div style="font-size:3.8rem;color:'+themeColor+';font-weight:800;line-height:0.9;font-family:var(--sans);margin-bottom:14px;transition:color 0.3s ease;">'+(sel+1)+'</div>'+
-            '<div style="writing-mode:vertical-rl;text-orientation:upright;font-size:1.45rem;letter-spacing:0.15em;color:var(--cream);font-family:var(--serif);font-weight:600;">月雨量、風來自'+WNAME[sel]+'</div>'+
+            '<div class="cc-big-label" style="writing-mode:vertical-rl;text-orientation:upright;font-size:1.45rem;letter-spacing:0.15em;color:var(--cream);font-family:var(--serif);font-weight:600;">月雨量、風來自'+WNAME[sel]+'</div>'+
           '</div>'+
           '<div style="font-size:1.25rem;color:'+themeColor+';font-weight:700;font-family:var(--sans);white-space:nowrap;border-top:1px solid rgba(200,162,92,0.25);padding-top:14px;transition:color 0.3s ease;">'+R[sel]+' <span style="font-size:0.85rem;color:var(--muted);">mm</span></div>'+
         '</div>';
@@ -1153,13 +1167,13 @@ render(pre.today);
     // 更新左側圖例 (垂直冰棒版 - 內部數字轉正)
     var leg=document.getElementById('ccLegend');
     if(leg)leg.innerHTML=
-      '<div style="display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:12px;height:320px;margin-top:20px;">'+
+      '<div class="cc-leg-wrap" style="display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:12px;height:320px;margin-top:20px;">'+
         // 右側標題
-        '<div style="writing-mode:vertical-rl;text-orientation:mixed;color:var(--cream);font-weight:500;font-size:0.85rem;letter-spacing:0.1em;">'+
+        '<div class="cc-leg-title" style="writing-mode:vertical-rl;text-orientation:mixed;color:var(--cream);font-weight:500;font-size:0.85rem;letter-spacing:0.1em;">'+
           '雨量分級 <span style="font-size:0.7rem;color:var(--muted);">(地圖色罩濃淡，比照中央氣象署)</span>'+
         '</div>'+
         // 中間色階條 (加寬至 52px，拿掉直書設定讓字體變橫的)
-        '<div style="display:flex;flex-direction:column;width:52px;height:100%;border-radius:6px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.4);font-size:0.65rem;font-weight:700;color:#1a1206;text-align:center;letter-spacing:0;">'+
+        '<div class="cc-leg-scale" style="display:flex;flex-direction:column;width:52px;height:100%;border-radius:6px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.4);font-size:0.65rem;font-weight:700;color:#1a1206;text-align:center;letter-spacing:0;">'+
           '<div style="background:#a0e0a0;flex:1;display:flex;align-items:center;justify-content:center;">&lt;175</div>'+
           '<div style="background:#3cb43c;flex:1.2;display:flex;align-items:center;justify-content:center;color:#fff;">175-220</div>'+
           '<div style="background:#f0e038;flex:1.2;display:flex;align-items:center;justify-content:center;">220-280</div>'+
@@ -1168,10 +1182,10 @@ render(pre.today);
           '<div style="background:#a02890;flex:1;display:flex;align-items:center;justify-content:center;color:#fff;">460+</div>'+
         '</div>'+
         // 左側單位與風向
-        '<div style="writing-mode:vertical-rl;text-orientation:mixed;font-size:0.75rem;color:var(--muted);display:flex;justify-content:space-between;height:100%;padding:4px 0;">'+
+        '<div class="cc-leg-side" style="writing-mode:vertical-rl;text-orientation:mixed;font-size:0.75rem;color:var(--muted);display:flex;justify-content:space-between;height:100%;padding:4px 0;">'+
           '<span style="letter-spacing:0.05em;">單位 mm / 月</span>'+
           '<span style="color:#ffd98a;letter-spacing:0.05em;display:flex;align-items:center;gap:4px;">'+
-            '<span style="transform:rotate(90deg) translateX(2px);">➤</span> 箭頭＝風往哪吹'+
+            '<span class="cc-leg-arrow" style="transform:rotate(90deg) translateX(2px);display:inline-block;">➤</span> 箭頭＝風往哪吹'+
           '</span>'+
         '</div>'+
       '</div>';
