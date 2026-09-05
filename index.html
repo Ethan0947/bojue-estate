@@ -81,7 +81,7 @@
     min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
     position:relative;padding:0 0 8vh;
     background:
-      linear-gradient(to top, var(--navy-900) 2%, rgba(9,20,33,.42) 38%, rgba(9,20,33,.7) 100%),
+      linear-gradient(to top, var(--navy-900) 2%, rgba(9,20,33,.22) 40%, rgba(9,20,33,.42) 100%),
       url('hero.jpg') center/cover no-repeat,
       linear-gradient(135deg,#0f2740,#091421 70%);
   }
@@ -554,6 +554,145 @@ gap:30px;
 .cc-leg-arrow{transform:none!important;}
 }
 </style>
+<style>
+/* HERO：整組靠右上 */
+.hero{justify-content:flex-start;padding:13vh 0 8vh}
+.hero .wrap{
+  text-align:right;
+  max-width:none;width:100%;
+  margin-right:0;margin-left:auto;
+  padding-right:7vw;
+}
+.hero-crown{
+  position:static;transform:none;left:auto;top:auto;
+  width:44px;height:auto;display:block;margin:0 0 1.3rem auto;
+  opacity:0;animation:fadeUp .9s .3s ease forwards;
+}
+.hero-tag{padding-left:0;padding-right:.5em}
+.hero h1{padding-right:.05em}
+.hero h1 .sub{padding-right:.1em}
+@media(max-width:640px){
+  .hero{padding:11vh 0 8vh}
+  .hero .wrap{padding-right:6vw}
+}
+</style>
+<style>
+/* 只在右上文字區做柔光暈，其餘底圖保持亮 */
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(ellipse 52% 34% at 62% 20%,
+    rgba(9,20,33,.52) 0%, rgba(9,20,33,.30) 46%, rgba(9,20,33,0) 74%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-crown{position:relative;z-index:2}
+
+/* 字色跳開：主標純白＋深陰影，小字與副標走金 */
+.hero h1{
+  color:#fff;
+  text-shadow:0 1px 2px rgba(9,20,33,.55), 0 4px 26px rgba(9,20,33,.75);
+}
+.hero-tag{
+  color:#f0d9a0;
+  text-shadow:0 1px 10px rgba(9,20,33,.9);
+}
+.hero h1 .sub{
+  color:#f0d9a0;
+  text-shadow:0 1px 12px rgba(9,20,33,.85);
+}
+</style>
+<style>
+/* ── 「我為什麼做這個」＝一卷攤開的羊皮 ── */
+#why .parchment{
+  position:relative;
+  margin:2.8rem auto 2.4rem;
+  max-width:760px;
+  padding:4.2rem 3.4rem 3.4rem;
+  background:
+    radial-gradient(circle at 21% 15%, rgba(112,78,34,.13), transparent 7%),
+    radial-gradient(circle at 79% 27%, rgba(112,78,34,.09), transparent 5%),
+    radial-gradient(circle at 12% 63%, rgba(112,78,34,.10), transparent 6%),
+    radial-gradient(circle at 88% 78%, rgba(112,78,34,.11), transparent 6.5%),
+    radial-gradient(circle at 46% 92%, rgba(112,78,34,.07), transparent 5%),
+    url('parchment.jpg') center/cover, #d6ba8c;
+  color:#181310;
+  box-shadow:
+    0 10px 46px rgba(0,0,0,.55),
+    inset 0 0 70px rgba(96,68,32,.16);
+}
+/* 紙的左右微彎（中間亮、兩側暗，做出攤平的弧度） */
+#why .parchment::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,
+    rgba(88,62,28,.26) 0%, rgba(88,62,28,.05) 7%,
+    rgba(255,246,224,.10) 50%,
+    rgba(88,62,28,.05) 93%, rgba(88,62,28,.26) 100%);
+}
+/* 上下捲軸 */
+#why .roll{
+  position:absolute;left:-22px;right:-22px;height:46px;
+  background:linear-gradient(180deg,
+    #6f5027 0%, #a5824c 14%, #d8bd8d 34%, #efdcb4 47%,
+    #d0b183 62%, #9a7742 84%, #5e421f 100%);
+  border-radius:23px/50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,240,208,.45);
+}
+#why .roll.top{top:-30px}
+#why .roll.bot{bottom:-30px}
+/* 捲軸兩端的軸心 */
+#why .roll::before,#why .roll::after{
+  content:"";position:absolute;top:6px;width:20px;height:34px;border-radius:10px/50%;
+  background:linear-gradient(180deg,#4e3618,#8a6836 45%,#3d2a12);
+}
+#why .roll::before{left:-8px}
+#why .roll::after{right:-8px}
+
+/* 紙上的字：深褐、襯線、行距放寬，像手寫信 */
+#why .parchment p{
+  color:#181310;
+  font-family:var(--serif);
+  line-height:2.15;
+  letter-spacing:.03em;
+}
+#why .parchment .lead-in{
+  color:#241c14;font-size:1.16em;font-weight:600;
+  border-bottom:1px solid rgba(90,63,28,.22);
+  padding-bottom:1.1rem;margin-bottom:1.6rem;
+}
+#why .parchment b{color:#4a2a08;font-weight:800}
+#why .parchment > p:last-child{
+  border-top:1px solid rgba(90,63,28,.22)!important;
+  color:#3b3126!important;opacity:1!important;
+}
+#why .parchment .salute{
+  font-family:var(--serif);font-size:1.05em;font-weight:700;
+  color:#241c14;letter-spacing:.06em;margin-bottom:1.6rem;
+}
+#why .parchment .sign{
+  text-align:right;font-family:var(--serif);font-size:1.12em;font-weight:700;
+  color:#241c14;letter-spacing:.14em;
+  margin-top:2.4rem;padding-right:.4rem;
+}
+#why .quill{
+  position:absolute;top:-52px;right:14px;width:58px;height:58px;
+  transform:rotate(16deg);
+  filter:drop-shadow(0 5px 12px rgba(0,0,0,.6));z-index:3;
+}
+@media(max-width:640px){
+  #why .parchment{padding:3rem 1.6rem 2.6rem;margin-left:6px;margin-right:6px}
+  #why .roll{left:-10px;right:-10px;height:34px}
+  #why .roll.top{top:-22px} #why .roll.bot{bottom:-22px}
+  #why .parchment .salute{
+  font-family:var(--serif);font-size:1.05em;font-weight:700;
+  color:#241c14;letter-spacing:.06em;margin-bottom:1.6rem;
+}
+#why .parchment .sign{
+  text-align:right;font-family:var(--serif);font-size:1.12em;font-weight:700;
+  color:#241c14;letter-spacing:.14em;
+  margin-top:2.4rem;padding-right:.4rem;
+}
+#why .quill{width:42px;height:42px;top:-40px;right:8px}
+}
+</style>
 </head>
 <body>
 <span id="top"></span>
@@ -567,23 +706,21 @@ gap:30px;
 </nav>
 
 <header class="hero">
-  <svg class="hero-crown" viewBox="0 0 64 48" fill="none">
+  <div class="wrap">
+    <svg class="hero-crown" viewBox="0 0 64 48" fill="none">
     <path d="M6 42h52M10 42 6 14l13 11L32 6l13 19 13-11-4 28" stroke="#c8a25c" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
     <circle cx="32" cy="6" r="2.6" fill="#e3c98c"/><circle cx="6" cy="14" r="2.2" fill="#c8a25c"/><circle cx="58" cy="14" r="2.2" fill="#c8a25c"/>
   </svg>
-  <div class="wrap">
-    <p class="hero-tag">汐 止 · 伯 爵 山 莊</p>
-    <h1>伯爵山莊<span class="sub">完 整 社 區 情 報 站</span></h1>
-    <div class="hero-meta">
-      <span style="letter-spacing:.12em;line-height:1.9">從透天到電梯，一個伯爵山莊，<br>安放每一種生活。</span>
-    </div>
+    <p class="hero-tag">汐 止</p>
+    <h1>伯爵山莊<span class="sub">一座山莊，40年的生活地圖</span></h1>
   </div>
   <div class="scroll-cue">SCROLL</div>
 </header>
 
 <section class="creed">
   <div class="wrap">
-    <p>我賣的從來不是一間房子，<br>是一個家，未來幾十年要安放的<b>人生</b>。</p>
+    <p>從透天到電梯，一個伯爵山莊，<br>安放每一種生活。</p>
+    <p style="margin-top:2.2rem">我賣的從來不是一間房子，<br>是一個家，未來幾十年要安放的<b>人生</b>。</p>
     <p class="by">— 仲介心骨 · 對象是人，不是物件</p>
   </div>
 </section>
@@ -594,7 +731,7 @@ gap:30px;
       <div class="tally-item">
         <div class="tally-num" data-count="5">0</div>
         <div class="tally-label">Clusters</div>
-        <div class="tally-sub">社區聚落</div>
+        <div class="tally-sub">在售棟別</div>
       </div>
       <div class="tally-item">
         <div class="tally-num" data-count="8">0</div>
@@ -606,6 +743,40 @@ gap:30px;
         <div class="tally-label">Price Range</div>
         <div class="tally-sub">總價帶</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Why This Site</p>
+      <h2>我為什麼做這個</h2>
+      <p class="lead">在往下看四十年的社區史之前，先講清楚這個網站是怎麼來的。</p>
+    </div>
+
+    <div class="story reveal parchment"><span class="roll top"></span><span class="roll bot"></span>
+      <svg class="quill" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <path d="M52 8C38 12 26 22 19 34c-3 5-5 11-6 17l4-2c2-8 6-15 12-21 7-7 15-12 23-16z" fill="#c8a25c" opacity=".9"/>
+  <path d="M52 8c-6 14-14 24-24 31-4 3-8 5-13 6 3-9 8-17 15-23C36 16 44 11 52 8z" fill="#e0c894" opacity=".75"/>
+  <path d="M15 51 8 58" stroke="#c8a25c" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M12 48c-2 2-3 5-3 8 3 0 6-1 8-3" fill="#a8874a" opacity=".8"/>
+</svg>
+      <p class="salute">To&nbsp; 點進來的朋友們：</p>
+      <p class="lead-in">有時候喜歡一件事，是真的看感覺的。</p>
+
+      <p>每天上班順著基隆路走，我都會感覺到發燙的柏油路與混濁到不行的廢氣，整個城市就像一座巨大而壓抑的齒輪牢籠。</p>
+
+      <p>但每當順著康寧街轉進伯爵山莊，才感覺自己重新活了過來。<b>在山下，我們是齒輪；進了山，我們才是人。</b>每當轉進來的這一瞬間，儀表板上的指針慢了下來，迎面而來的不再是鐵鏽和油煙，而是夾帶著水氣與泥土的清香，就像整座山都在跟著你一起呼吸放鬆。</p>
+
+      <p>喜歡伯爵，就跟我喜歡料理一樣。我曾經在廚房的高壓節奏裡待了整整十年，對我來說，這座山莊就像一鍋老媽端出來的家常火鍋——裡面燉著吸滿湯汁的大白菜，還有我最愛的獅子頭。不用講究華麗的擺盤，想吃什麼就放什麼，平平淡淡，卻充滿了無拘無束的自由。每當掀開鍋蓋，冒出的是滾燙的熱氣——暖心，也暖胃。</p>
+
+      <p>我是晟華，您也可以叫我小朱。這座山莊<b>十四年的氣候數據</b>與<b>四十年的歲月時光</b>，我幫大家整理好了。</p>
+
+      <p>因為我知道，這裡裝下的不是冰冷的磚瓦，<b>而是一份千金難買的生活步調。</b></p>
+      <p class="sign">晟&nbsp;華&nbsp; 敬上</p>
+
+      <p style="margin-top:2rem;padding-top:1.2rem;border-top:1px solid rgba(0,0,0,.12);font-size:.92em;opacity:.72">資料我盡量找官方來源，但一個人查難免有疏漏。<b>發現錯的地方跟我說，我會改。</b>這是一份還在整理中的伯爵山莊生活地圖——三千多戶、四十年，不可能一次查完。</p>
     </div>
   </div>
 </section>
@@ -793,7 +964,7 @@ gap:30px;
         <div class="l-title">仁愛特區｜電梯四房車採光佳</div>
         <div class="l-addr">採光佳 · 方正格局</div>
         <div class="l-stats"><span>建坪 <b>85.15 坪</b></span><span><b>4</b> 房 2 廳 3 衛</span><span>含車位</span></div>
-        <div class="l-chips"><span class="chip key">邊間戶</span><span class="chip">樓中樓</span><span class="chip">電梯</span><span class="chip">空屋可看</span></div><div class="l-price"><span class="now">1,658<small>萬</small></span><span class="unit">電梯四房</span></div><button class="l-toggle" type="button">查看完整資料 <svg class="chev" width="14" height="9" viewBox="0 0 14 9" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1.5 7 7l6-5.5"/></svg></button></div><div class="l-detail"><div class="l-detail-inner"><div class="spec-grid"><div class="s"><span class="sk">型態</span><span class="sv">電梯大樓</span></div><div class="s"><span class="sk">屋齡</span><span class="sv">34.1 年</span></div><div class="s"><span class="sk">樓層</span><span class="sv">5～6 / 12F（樓中樓）</span></div><div class="s"><span class="sk">格局</span><span class="sv">4房2廳3衛</span></div><div class="s"><span class="sk">座向</span><span class="sv">朝西北</span></div><div class="s"><span class="sk">採光</span><span class="sv">2 面</span></div><div class="s"><span class="sk">主建坪</span><span class="sv">59.5 坪</span></div><div class="s"><span class="sk">公設</span><span class="sv">14.8 坪（18.36%）</span></div><div class="s"><span class="sk">土地持分</span><span class="sv">23.04 坪</span></div><div class="s"><span class="sk">車位</span><span class="sv">坡道平面（含，160萬）</span></div><div class="s"><span class="sk">管理費</span><span class="sv">3,399 元/月</span></div><div class="s"><span class="sk">警衛</span><span class="sv">24 小時</span></div></div><div class="feat-h">物件特色</div><ul class="feat-list"><li>邊間戶，採光通風佳</li><li>標準樓中樓，使用空間大</li><li>電梯大樓，24 小時保全管理</li><li>空屋，可隨時帶看</li><li>近國道一號，交通便利</li></ul><div class="dt-cta"><a class="call" href="tel:0978029671">致電洽詢</a><a class="line" href="https://line.me/ti/p/~95967" target="_blank" rel="noopener">LINE 詢問</a></div></div></div></article>
+        <div class="l-chips"><span class="chip key">邊間戶</span><span class="chip">樓中樓</span><span class="chip">電梯</span><span class="chip">空屋可看</span></div><div class="l-price"><span class="now">1,600<small>萬</small></span><span class="unit">電梯四房</span></div><button class="l-toggle" type="button">查看完整資料 <svg class="chev" width="14" height="9" viewBox="0 0 14 9" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1.5 7 7l6-5.5"/></svg></button></div><div class="l-detail"><div class="l-detail-inner"><div class="spec-grid"><div class="s"><span class="sk">型態</span><span class="sv">電梯大樓</span></div><div class="s"><span class="sk">屋齡</span><span class="sv">34.1 年</span></div><div class="s"><span class="sk">樓層</span><span class="sv">5～6 / 12F（樓中樓）</span></div><div class="s"><span class="sk">格局</span><span class="sv">4房2廳3衛</span></div><div class="s"><span class="sk">座向</span><span class="sv">朝西北</span></div><div class="s"><span class="sk">採光</span><span class="sv">2 面</span></div><div class="s"><span class="sk">主建坪</span><span class="sv">59.5 坪</span></div><div class="s"><span class="sk">公設</span><span class="sv">14.8 坪（18.36%）</span></div><div class="s"><span class="sk">土地持分</span><span class="sv">23.04 坪</span></div><div class="s"><span class="sk">車位</span><span class="sv">坡道平面（含，160萬）</span></div><div class="s"><span class="sk">管理費</span><span class="sv">3,399 元/月</span></div><div class="s"><span class="sk">警衛</span><span class="sv">24 小時</span></div></div><div class="feat-h">物件特色</div><ul class="feat-list"><li>邊間戶，採光通風佳</li><li>標準樓中樓，使用空間大</li><li>電梯大樓，24 小時保全管理</li><li>空屋，可隨時帶看</li><li>近國道一號，交通便利</li></ul><div class="dt-cta"><a class="call" href="tel:0978029671">致電洽詢</a><a class="line" href="https://line.me/ti/p/~95967" target="_blank" rel="noopener">LINE 詢問</a></div></div></div></article>
 
     <div class="series reveal">
       <div class="s-line"><span class="s-idx">Ⅲ</span><span class="s-name">伯爵 · <b>夫人</b></span></div>
