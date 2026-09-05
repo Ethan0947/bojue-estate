@@ -605,8 +605,9 @@ gap:30px;
 #why .parchment{
   position:relative;
   margin:2.8rem auto 2.4rem;
-  max-width:760px;
-  padding:4.2rem 3.4rem 3.4rem;
+  max-width:940px;
+  padding:5rem 4.6rem 4rem;
+  font-size:1.16em;
   background:
     radial-gradient(circle at 21% 15%, rgba(112,78,34,.13), transparent 7%),
     radial-gradient(circle at 79% 27%, rgba(112,78,34,.09), transparent 5%),
@@ -629,18 +630,18 @@ gap:30px;
 }
 /* 上下捲軸 */
 #why .roll{
-  position:absolute;left:-22px;right:-22px;height:46px;
+  position:absolute;left:-26px;right:-26px;height:54px;
   background:linear-gradient(180deg,
     #6f5027 0%, #a5824c 14%, #d8bd8d 34%, #efdcb4 47%,
     #d0b183 62%, #9a7742 84%, #5e421f 100%);
-  border-radius:23px/50%;
+  border-radius:27px/50%;
   box-shadow:0 6px 18px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,240,208,.45);
 }
-#why .roll.top{top:-30px}
-#why .roll.bot{bottom:-30px}
+#why .roll.top{top:-34px}
+#why .roll.bot{bottom:-34px}
 /* 捲軸兩端的軸心 */
 #why .roll::before,#why .roll::after{
-  content:"";position:absolute;top:6px;width:20px;height:34px;border-radius:10px/50%;
+  content:"";position:absolute;top:7px;width:23px;height:40px;border-radius:10px/50%;
   background:linear-gradient(180deg,#4e3618,#8a6836 45%,#3d2a12);
 }
 #why .roll::before{left:-8px}
@@ -650,43 +651,46 @@ gap:30px;
 #why .parchment p{
   color:#181310;
   font-family:var(--serif);
+  font-size:1.12em;
+  font-weight:500;
   line-height:2.15;
   letter-spacing:.03em;
 }
 #why .parchment .lead-in{
-  color:#241c14;font-size:1.16em;font-weight:600;
+  color:#1a1410;font-size:1.3em;font-weight:700;font-weight:600;
   border-bottom:1px solid rgba(90,63,28,.22);
   padding-bottom:1.1rem;margin-bottom:1.6rem;
 }
-#why .parchment b{color:#4a2a08;font-weight:800}
+#why .parchment b{color:#3d2205;font-weight:800}
 #why .parchment > p:last-child{
   border-top:1px solid rgba(90,63,28,.22)!important;
-  color:#3b3126!important;opacity:1!important;
+  color:#2e2418!important;opacity:1!important;
+  font-size:1.02em!important;
 }
 #why .parchment .salute{
-  font-family:var(--serif);font-size:1.05em;font-weight:700;
+  font-family:var(--serif);font-size:1.2em;font-weight:700;
   color:#241c14;letter-spacing:.06em;margin-bottom:1.6rem;
 }
 #why .parchment .sign{
-  text-align:right;font-family:var(--serif);font-size:1.12em;font-weight:700;
+  text-align:right;font-family:var(--serif);font-size:1.2em;font-weight:700;
   color:#241c14;letter-spacing:.14em;
   margin-top:2.4rem;padding-right:.4rem;
 }
 #why .quill{
-  position:absolute;top:-52px;right:14px;width:58px;height:58px;
+  position:absolute;top:-60px;right:18px;width:68px;height:68px;
   transform:rotate(16deg);
   filter:drop-shadow(0 5px 12px rgba(0,0,0,.6));z-index:3;
 }
 @media(max-width:640px){
-  #why .parchment{padding:3rem 1.6rem 2.6rem;margin-left:6px;margin-right:6px}
+  #why .parchment{padding:3.2rem 1.7rem 2.6rem;margin-left:6px;margin-right:6px;font-size:1.08em}
   #why .roll{left:-10px;right:-10px;height:34px}
   #why .roll.top{top:-22px} #why .roll.bot{bottom:-22px}
   #why .parchment .salute{
-  font-family:var(--serif);font-size:1.05em;font-weight:700;
+  font-family:var(--serif);font-size:1.2em;font-weight:700;
   color:#241c14;letter-spacing:.06em;margin-bottom:1.6rem;
 }
 #why .parchment .sign{
-  text-align:right;font-family:var(--serif);font-size:1.12em;font-weight:700;
+  text-align:right;font-family:var(--serif);font-size:1.2em;font-weight:700;
   color:#241c14;letter-spacing:.14em;
   margin-top:2.4rem;padding-right:.4rem;
 }
